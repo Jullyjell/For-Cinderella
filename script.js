@@ -6,22 +6,32 @@ const quotes = [
 ];
 
 let quoteIndex = 0;
+
 const quoteText = document.getElementById('quote-text');
 const envelope = document.getElementById('envelope');
 const yesBtn = document.getElementById('yesBtn');
 const noBtn = document.getElementById('noBtn');
 const dynamicMessage = document.getElementById('dynamic-message');
 const musicToggle = document.getElementById('music-toggle');
-const bgMusic = document.getElementById('bg-music')
+const bgMusic = document.getElementById('bg-music');
+
 
 function buatHujanEfek(daftarEmoji) {
     for (let i = 0; i < 40; i++) {
         const elemenEmoji = document.createElement('div');
+
         elemenEmoji.classList.add('emoji-drop');
-        elemenEmoji.innerText = daftarEmoji[Math.floor(Math.random() * daftarEmoji.length)];
+
+        elemenEmoji.innerText =
+            daftarEmoji[Math.floor(Math.random() * daftarEmoji.length)];
+
         elemenEmoji.style.left = (Math.random() * 100) + "vw";
-        elemenEmoji.style.animationDelay = (Math.random() * 0.8) + "s";
-        elemenEmoji.style.fontSize = (Math.random() * 15 + 20) +"px";
+
+        elemenEmoji.style.animationDelay =
+            (Math.random() * 0.8) + "s";
+
+        elemenEmoji.style.fontSize =
+            (Math.random() * 15 + 20) + "px";
 
         document.body.appendChild(elemenEmoji);
 
@@ -31,67 +41,116 @@ function buatHujanEfek(daftarEmoji) {
     }
 }
 
+
 function terima() {
+
     if (bgMusic && bgMusic.paused) {
-        bgMusic.play().catch(err => console.log("Musik butuh interaksi user dulu"));
+        bgMusic.play().catch(() => {
+            console.log("Musik membutuhkan interaksi user.");
+        });
+
         if (musicToggle) {
             musicToggle.classList.add('rotating');
             musicToggle.textContent = '🎵';
         }
     }
 
-    buatHujanEfek(['💖', '❤️', '💘', '💝', '🫶🏻', '✨']);
-    
-    if (dynamicMessage) {
-        dynamicMessage.style.display = 'block';
-        dynamicMessage.innerHTML = "🎉 <b>Yeaayyy, Beneran kan bb??</b> Sekarang coba kamu klik <b>amplop surat</b> diatas buat ngebuka pesan rahasia dari aku hehe😉✨";
+    buatHujanEfek([
+        '💖',
+        '❤️',
+        '💘',
+        '💝',
+        '🫶🏻',
+        '✨'
+    ]);
+
+    if (envelope) {
+        envelope.classList.add('opened');
     }
 
-    setTimeout(() => {
-        alert('Aaaaakkk😣, Beneran yaa pwettyyy👉🏻👈🏻 Kita janjian di chat sekarang, no ngaret ngaret club, See you Cinderella 💖✨');
-    }, 500);
+    if (quoteText) {
+        quoteText.textContent =
+            "Aaaaakkk😣, Beneran yaa pwettyyy👉🏻👈🏻 Kita janjian di chat sekarang, no ngaret ngaret club, See you Cinderella 💖✨";
+
+        quoteText.style.opacity = 1;
+    }
+
+    if (dynamicMessage) {
+        dynamicMessage.style.display = 'block';
+
+        dynamicMessage.innerHTML =
+            "🎉 <b>Yeaayyy, Beneran kan bb??</b> 💖✨";
+    }
+
+    if (yesBtn) {
+        yesBtn.textContent = "Yeeaayyy 💖";
+    }
 }
 
 function kabur() {
+
+    if (!noBtn) return;
+
     noBtn.style.position = 'fixed';
     noBtn.style.zIndex = '9999';
     noBtn.style.width = '120px';
 
-    const batasX = window.innerWidth - noBtn.offsetWidth - 20;
-    const batasY = window.innerHeight - noBtn.offsetHeight - 20;
+    const batasX =
+        window.innerWidth - noBtn.offsetWidth - 20;
 
-    const x = Math.max(10, Math.random() * batasX);
-    const y = Math.max(10, Math.random() * batasY);
+    const batasY =
+        window.innerHeight - noBtn.offsetHeight - 20;
+
+    const x =
+        Math.max(10, Math.random() * batasX);
+
+    const y =
+        Math.max(10, Math.random() * batasY);
 
     noBtn.style.left = x + 'px';
     noBtn.style.top = y + 'px';
 }
 
 if (envelope) {
-    envelope.addEventListener('click', () => {
-        buatHujanEfek(['🌸', '🧸', '🐣', '✨', '🌼']);
 
-        quoteIndex = (quoteIndex + 1) % quotes.length;
-        if (quoteText) {
-            quoteText.style.opacity = 0;
-            setTimeout(() => {
-                quoteText.textContent = `"${quotes[quoteIndex]}"`;
-                quoteText.style.opacity = 1;
-            }, 200);
+    envelope.addEventListener('click', () => {
+        if (!envelope.classList.contains('opened')) {
+            return;
         }
+
+        buatHujanEfek([
+            '🌸',
+            '🧸',
+            '🐣',
+            '✨',
+            '🌼'
+        ]);
+
     });
 }
 
 if (musicToggle && bgMusic) {
+
     musicToggle.addEventListener('click', () => {
+
         if (bgMusic.paused) {
-            bgMusic.play().catch(err => console.log("Musik butuh interaksi user duluu"));
+
+            bgMusic.play().catch(() => {
+                console.log("Musik membutuhkan interaksi user.");
+            });
+
             musicToggle.classList.add('rotating');
             musicToggle.textContent = '🎵';
+
         } else {
-            bgMusic.paused();
+
+            bgMusic.pause();
+
             musicToggle.classList.remove('rotating');
             musicToggle.textContent = '🔇';
+
         }
+
     });
+
 }
