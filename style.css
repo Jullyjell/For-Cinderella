@@ -170,6 +170,17 @@ footer {
     animation: fallDown 3s linear forwards;
 }
 
+.envelope .letter {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.envelope.opened .letter {
+    max-height: 300px;
+    opacity: 1;
+
 @keyframes fallDown {
     0% { transform: translateY(0) rotate(0deg) scale(0); opacity: 1;}
     10% { opacity: 1; transform: translateY(5vh) rotate(30deg) scale(1); }
