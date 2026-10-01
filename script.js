@@ -69,11 +69,13 @@ function terima() {
     }
 
     if (quoteText) {
-        quoteText.textContent =
-            "Aaaaakkk😣, Beneran yaa pwettyyy👉🏻👈🏻 Kita janjian di chat sekarang, no ngaret ngaret club, See you Cinderella 💖✨";
 
-        quoteText.style.opacity = 1;
-    }
+    quoteText.innerHTML = quotes
+        .map(quote => `<div class="quote-item">${quote}</div>`)
+        .join("");
+
+    quoteText.style.opacity = 1;
+}
 
     if (dynamicMessage) {
         dynamicMessage.style.display = 'block';
