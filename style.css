@@ -2,7 +2,7 @@ body {
     font-family: 'Segoe UI', Roboto, sans-serif;
     background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
     margin: 0;
-    padding: 20px 0;
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,9 +15,9 @@ body {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 30px;
-    padding: 40px 25px;
+    padding: 30px 20px;
     width: 90%;
-    max-width: 420px;
+    max-width: 360px;
     box-shadow: 0 20px 40px rgba(255, 105, 180, 0.25);
     text-align: center;
     box-sizing: border-box;
@@ -80,13 +80,14 @@ h1 {
 .action-area {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 15px;
     position: relative;
-    min-height: 130px;
+    width: 100%;
 }
 
 button {
-    padding: 16px;
+    padding: 14px;
     border: none;
     border-radius: 16px;
     font-size: 15px;
@@ -94,6 +95,7 @@ button {
     cursor: pointer;
     transition: all 0.2s ease;
     width: 100%;
+    max-width: 280px;
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 }
@@ -114,6 +116,7 @@ button:active {
     border: 2px solid #ff4d6d;
     box-shadow: 0 5px 15px rgba(0,0,0,0.03);
     transition: top 0.1s ease, left 0.1s ease, transform 0.2s ease;
+    position: static;
 }
 
 .hidden-message {
