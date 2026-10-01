@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ada pesan buat Wawaa! 🧸</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <audio id="bg-music" src="Cutest Pair.mp3" loop preload="auto"></audio>
+
+        <button id="music-toggle" class="btn-music">🎵</button>
+
+        <div class="card-container">
+            <div class="avatar-area">🧸✨🌸</div>
+            <h1>Haiii Wawaaa, Aku mau nannyaa...</h1>
+            <p class="subtitle">Weekend ini kami free gaaa? Kita main ke tempat yang dulu pernah kita datangi lagi yuuuu??</p>
+            <div class="envelope-wrapper" id="envelope">
+                <div class="envelope">
+                    <div class="letter">
+                    <p id="quote-text">Aaaaakkk😣, Beneran yaa pwettyyy👉🏻👈🏻 Kita janjian di chat sekarang, no ngaret ngaret club, See you Cinderella 💖✨</p>
+                </div>
+            </div>
+            </div>
+            <p class="envelope-hint">📩 Surat ini bakal terbuka kalo kamu klik 'Mau'</p>
+        </div>
+
+        <div class="action-area">
+            <button id="yesBtn" class="btn-primary" onclick="terima()">Yess, Aku mauu</button>
+            <button id="noBtn" class="btn-secondary" onmouseover="kabur()" onclick="kabur()">Ngga mau</button>
+        </div>
+
+        <div id="dynamic-message" class="hidden-message"></div>
+
+        <footer>
+            <p>Dibikin khusus buat Najwaa dari aku hehee✌🏻</p>
+        </footer>
+
+    </div>
+    <script src="script.js"></script>
+    </body>
+</html>
