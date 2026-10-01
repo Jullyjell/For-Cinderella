@@ -70,11 +70,30 @@ function terima() {
 
     if (quoteText) {
 
-    quoteText.innerHTML = quotes
-        .map(quote => `<div class="quote-item">${quote}</div>`)
-        .join("");
+    let index = 0;
 
-    quoteText.style.opacity = 1;
+    quoteText.innerHTML = "";
+
+    function tampilkanQuote() {
+
+        if (index >= quotes.length) return;
+
+        quoteText.style.opacity = 0;
+
+        setTimeout(() => {
+
+            quoteText.textContent = quotes[index];
+
+            quoteText.style.opacity = 1;
+
+            index++;
+
+            setTimeout(tampilkanQuote, 3000);
+
+        }, 500);
+    }
+
+    tampilkanQuote();
 }
 
     if (dynamicMessage) {
